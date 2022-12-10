@@ -1,0 +1,12 @@
+@startuml EntityAllocation
+
+(*) --> "Allocate Entity"
+If "allocater has free entities" then
+--> [Yes] "Get a free entity from queue of free entities"
+--> "Return entity"
+
+else
+--> [No] "Add a new (entity) signature to the vector signatures"
+--> "Return entity"
+
+@enduml

@@ -1,0 +1,3 @@
+ID,Average,Calls,Total
+add_component,0,10,0
+entity_loop,0.00558036,1792,10

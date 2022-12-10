@@ -1,0 +1,17 @@
+@startuml ComponentAllocation
+
+(*) --> "get component hash-code (unsigned int)"
+
+If "is the hash-code registered?" then
+--> [Yes] "return an ID corresponding to the components hash-code"
+
+else
+if "are there any previously allocated IDs in queue?"
+--> [Yes] "use and remove component ID from the front of the queue"
+--> "emplace hash-code and component ID in the map"
+else
+--> [No] "calculate component ID: sizeof(map) + 1"
+--> "emplace hash-code and component ID in the map"
+--> "return an ID corresponding to the components hash-code"
+
+@enduml

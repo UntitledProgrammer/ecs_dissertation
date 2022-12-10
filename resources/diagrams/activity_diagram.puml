@@ -1,0 +1,8 @@
+@startuml ActivityDiagram
+[*] --> Active
+
+state Active
+{
+    
+}
+@enduml

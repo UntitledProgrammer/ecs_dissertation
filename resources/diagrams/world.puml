@@ -1,0 +1,17 @@
+@startuml WorldDiagram
+
+'Classes:
+class World
+{
+    __Attributes__
+    -component_pools : Vector<StorageBase*>
+    -entity_allocator : EntityAllocator
+
+    __Methods__
+    +allocate_entity() : Unsigned Int
+    +add_component<T: typename>(entity: Unsigned Int, component: T)
+    +get_component<T: typename>(entity: Unsigned Int) : T
+    +allocate_collection<T: typename>() : Void
+}
+
+@enduml

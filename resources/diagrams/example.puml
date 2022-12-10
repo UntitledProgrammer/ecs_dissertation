@@ -1,0 +1,58 @@
+@startuml Example
+
+'Classes:
+class EntityAllocator
+{
+    __Attributes__
+    -signatures : Vector<Bitmask>
+    -free_entities : Queue<Unsigned Int>
+
+    __Methods__
+    -next_entity() : Unsigned Int
+    +generate() : Unsigned Int
+    +free(entity: Unsigned Int) : Void
+    +is_valid(entity: Unsigned Int) : Bool
+    +get_signature(entity: Unsigned Int) : Bitmask
+}
+
+class StorageBase { }
+
+class ComponentStorage<T: typename>
+{
+    __Attributes__
+    -components : Vector<T>
+    -entity_to_index : Map<Unsigned Int, Unsigned Int>
+
+    __Methods__
+    +add_component(entity: Unsigned Int, component: T) : Void
+    +remove_component(entity: Unsigned Int) : Bool
+}
+
+class World
+{
+    __Attributes__
+    -component_pools : Vector<StorageBase*>
+    -entity_allocator : EntityAllocator
+
+    __Methods__
+    +allocate_entity() : Unsigned Int
+    +add_component<T: typename>(entity: Unsigned Int, component: T)
+    +get_component<T: typename>(entity: Unsigned Int) : T
+    +allocate_collection<T: typename>() : Void
+}
+
+'Connections:
+ComponentStorage -|> StorageBase
+
+'Notes:
+note top of EntityAllocator
+    This class handles the generation and deletion of entities.
+    Each entity's signature is stored in a vector of bitmasks,
+    relative to their entity value.
+end note
+
+note bottom of ComponentStorage
+    This class dynamically stores all components of the same type.
+end note
+
+@enduml

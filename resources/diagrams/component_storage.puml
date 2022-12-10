@@ -1,0 +1,25 @@
+@startuml ComponentStorageDiagram
+
+'Classes:
+class StorageBase { }
+
+class ComponentStorage<T: typename>
+{
+    __Attributes__
+    -components : Vector<T>
+    -entity_to_index : Map<Unsigned Int, Unsigned Int>
+
+    __Methods__
+    +add_component<T : typename>(entity : Unsigned Int, component : T) : Void
+    +remove_component(entity : Unsigned Int) : Bool
+}
+
+'Connections:
+ComponentStorage -|> StorageBase
+
+'Notes:
+note top of ComponentStorage
+    This class dynamically stores all components of the same type.
+end note
+
+@enduml

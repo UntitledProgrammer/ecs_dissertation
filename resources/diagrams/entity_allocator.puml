@@ -1,0 +1,25 @@
+@startuml EntityDiagram
+
+'Classes:
+class EntityAllocator
+{
+    __Attributes__
+    -signatures : Vector<Bitmask>
+    -free_entities : Queue<Unsigned Int>
+
+    __Methods__
+    -next_entity() : Unsigned Int
+    +generate() : Unsigned Int
+    +free(entity: Unsigned Int) : Void
+    +is_valid(entity: Unsigned Int) : Bool
+    +get_signature(entity: Unsigned Int) : Bitmask
+}
+
+'Notes:
+note top of EntityAllocator
+    This class handles the generation and deletion of entities.
+    Each entity's signature is stored in a vector of bitmasks,
+    relative to their entity value.
+end note
+
+@enduml

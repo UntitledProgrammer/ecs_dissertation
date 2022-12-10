@@ -1,0 +1,25 @@
+@startuml SequenceDiagram
+
+'World
+autonumber
+alt Successful validation
+    World -> ComponentIdentifier : Validate component
+    World -> EntityAllocator : Validate entity
+    World -> ComponentIdentifier : Get component signature
+    World -> EntityAllocator : Verify entity's bitmask has component signature
+
+else Unsuccessful entity validation
+    EntityAllocator -> World : Throw assertation error
+
+else Unsuccessful component validation
+    ComponentIdentifier -> World : Throw assertation error
+
+end
+
+group Gather component
+    World -> World : Locate Component Storage for type of component
+    World -> ComponentStorage : Request entity's component
+    ComponentStorage -> ComponentStorage : Find components location for entity
+    ComponentStorage -> World : Return component casted to derived type
+end
+@enduml

@@ -1,0 +1,17 @@
+@startuml ComponentIdentifierDiagram
+
+'Classes:
+class ComponentIdentifier
+{
+    __Attributes__
+    -current_id : Unsigned Int
+    -free_identities : Vector<Unsigned Int>
+
+    __Methods__
+    +get_id<T: typename>() : Unsigned Int
+    +register_component<T : typename>() : Unsigned Int
+    +free_component<T : typename>() : Bool
+    -next_id() : Unsigned Int
+}
+
+@enduml
