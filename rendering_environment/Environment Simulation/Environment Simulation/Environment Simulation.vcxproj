@@ -177,6 +177,7 @@
     <ClInclude Include="ecs\storage\subset.hpp" />
     <ClInclude Include="profiler\src\Profiler.h" />
     <ClInclude Include="profiler\src\Timer.h" />
+    <ClInclude Include="application\time.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ghoul.png" />

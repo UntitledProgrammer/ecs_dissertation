@@ -2,6 +2,7 @@
 #define WORLD_H
 
 //Includes:
+#include "time.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace np_application
